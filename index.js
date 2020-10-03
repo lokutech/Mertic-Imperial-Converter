@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-require('dotenv').config
+require('dotenv').config()
 const path = require('path')
 const helmet = require('helmet')
 const exphbs = require('express-handlebars')
@@ -17,7 +17,7 @@ app.use(express.json({ extended: false }))
 app.use(express.urlencoded({ extended: false })) // Body parser makes req.body. available
 
 // Static Routes
-// app.use(express.static('public'))
+app.use(express.static('public'))
 
 app.get('/', (req, res) => {
   // res.json(processer(req.query.input))
@@ -34,7 +34,7 @@ app.get('/api/convert', (req, res) => {
   res.json(processer(req.query.input))
 })
 
-const PORT = process.env.PORT || 5001
+const PORT = process.env.PORT || 5000
 
 app.listen(PORT, console.log(`Server listening on port ${PORT}`))
 
